@@ -20,7 +20,7 @@ Hey! This is my personal portfolio website built with plain HTML, CSS and JavaSc
 
 ## Live site
 
-> my-portfolio-one-mocha-70.vercel.app
+> [Live](https://my-portfolio-one-mocha-70.vercel.app)
 
 ## Contact
 
