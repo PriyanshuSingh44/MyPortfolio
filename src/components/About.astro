@@ -1,0 +1,192 @@
+---
+---
+<section class="about-section" id="about">
+  <div class="animated-line"></div>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="about-inner">
+      <div class="about-left slide-left d2">
+        <!-- Circular photo with spinning lime ring -->
+        <div class="photo-ring-wrap">
+          <div class="photo-spinner" aria-hidden="true"></div>
+          <div class="photo-ring">
+            <img
+              src="https://drive.google.com/thumbnail?id=17TpC5-oSxpegKY78MkNza-P5-h7JhfvJ&sz=w600"
+              alt="Priyanshu Singh"
+              class="about-photo"
+            />
+          </div>
+          <div class="photo-dot photo-dot-1"></div>
+          <div class="photo-dot photo-dot-2"></div>
+          <div class="photo-dot photo-dot-3"></div>
+        </div>
+        <div class="about-status">
+          <span class="status-dot"></span>
+          Available for internships
+        </div>
+        <div class="about-meta">
+          <div class="meta-row"><span class="meta-k">Location</span><span class="meta-v">India 🇮🇳</span></div>
+          <div class="meta-row"><span class="meta-k">Email</span><span class="meta-v">priyanshu3303@gmail.com</span></div>
+          <div class="meta-row"><span class="meta-k">University</span><span class="meta-v">LPU, Punjab</span></div>
+          <div class="meta-row"><span class="meta-k">Year</span><span class="meta-v">3rd Year B.Tech</span></div>
+        </div>
+      </div>
+      <div class="about-right">
+        <p class="about-eyebrow slide-right d2">&lt;about /&gt;</p>
+        <h2 class="about-title slide-right d3">
+          I build intelligent<br/>systems that <span class="accent-text">matter.</span>
+        </h2>
+        <div class="about-text slide-right d4">
+          <p>
+            Third-year <strong>B.Tech (AI &amp; ML)</strong> student at Lovely Professional University
+            obsessed with turning raw data into impactful decisions. I've shipped NLP platforms,
+            predictive dashboards, and full-stack ML systems.
+          </p>
+          <p>
+            Outside code — competitive programming, diving into research papers,
+            and contributing to open-source. Always building, always learning.
+          </p>
+        </div>
+        <div class="about-stats scale-up d5">
+          <div class="astat"><span class="astat-n" data-to="20">0</span><span class="astat-u">+</span><p>Repos</p></div>
+          <div class="astat"><span class="astat-n" data-to="4">0</span><span class="astat-u">+</span><p>Certs</p></div>
+          <div class="astat"><span class="astat-n" data-to="6">0</span><span class="astat-u">+</span><p>Projects</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.about-section { padding: 100px 0; background: var(--dark); }
+.divider { width:100%; height:1px; background:var(--border); margin-bottom:80px; }
+.about-inner {
+  display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start;
+}
+.about-left { display: flex; flex-direction: column; gap: 24px; }
+/* ── Circular photo ring ── */
+.photo-ring-wrap {
+  position: relative;
+  width: 280px; height: 280px;
+  margin: 0 auto 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-spinner {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) 0deg,
+    var(--accent) 90deg,
+    transparent 90deg,
+    transparent 180deg,
+    rgba(0,210,255,0.25) 180deg,
+    rgba(0,210,255,0.25) 270deg,
+    transparent 270deg
+  );
+  animation: spinRing 6s linear infinite;
+}
+.photo-spinner::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--dark);
+}
+@keyframes spinRing { to { transform: rotate(360deg); } }
+.photo-ring {
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative; z-index: 1;
+  border: 1px solid rgba(0,210,255,0.15);
+}
+.about-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  filter: grayscale(15%) contrast(1.08) brightness(0.95);
+  transition: filter 0.5s ease;
+  display: block;
+}
+.photo-ring:hover .about-photo { filter: grayscale(0%) contrast(1) brightness(1); }
+/* Small orbital dots */
+.photo-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0,210,255,0.8);
+  animation: orbitDot 6s linear infinite;
+}
+.photo-dot-1 { animation-delay: 0s; }
+.photo-dot-2 { animation-delay: -2s; }
+.photo-dot-3 { animation-delay: -4s; width:5px;height:5px; background:rgba(0,210,255,0.5); }
+@keyframes orbitDot {
+  0%   { transform: rotate(0deg)   translate(143px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(143px) rotate(-360deg); }
+}
+.about-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.status-dot {
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent); box-shadow:0 0 8px var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.about-meta { display: flex; flex-direction: column; gap: 10px; }
+.meta-row {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border); padding-bottom: 10px;
+}
+.meta-k { font-family:var(--font-mono); font-size:0.72rem; color:var(--gray-dim); letter-spacing:0.06em; }
+.meta-v { font-family:var(--font-mono); font-size:0.78rem; color:var(--gray); }
+/* Right */
+.about-eyebrow { font-family:var(--font-mono); font-size:0.85rem; color:var(--accent); margin-bottom:12px; }
+.about-title {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.03em; color: var(--white);
+  margin-bottom: 28px;
+}
+.accent-text { color: var(--accent); }
+.about-text { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+.about-text p { font-family:var(--font-mono); font-size:0.88rem; color:var(--gray); line-height:1.85; }
+.about-text strong { color: var(--white); font-weight:600; }
+.about-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+  padding: 28px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 4px;
+  margin-bottom: 32px;
+}
+.astat { text-align:center; }
+.astat-n {
+  font-family:var(--font-head); font-size:2.2rem; font-weight:700;
+  color:var(--accent); line-height:1;
+}
+.astat-u { font-family:var(--font-head); font-size:1.4rem; color:var(--accent); }
+.astat p { font-family:var(--font-mono); font-size:0.72rem; color:var(--gray-dim); margin-top:4px; letter-spacing:0.06em; }
+@media(max-width:900px){
+  .about-inner{grid-template-columns:1fr;gap:48px;}
+  .about-photo{max-width:260px;}
+}
+@media(max-width:480px){ .about-stats{grid-template-columns:1fr 1fr;} }
+</style>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.querySelectorAll<HTMLElement>('[data-to]').forEach(el=>{
+      const to=parseInt(el.dataset.to||'0');
+      let n=0; const step=Math.ceil(to/40);
+      const t=setInterval(()=>{n=Math.min(n+step,to);el.textContent=String(n);if(n>=to)clearInterval(t);},25);
+    });
+    obs.unobserve(e.target);
+  });
+},{threshold:0.3});
+document.querySelectorAll('.about-stats').forEach(el=>obs.observe(el));
+</script>

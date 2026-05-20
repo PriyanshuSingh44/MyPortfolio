@@ -1,0 +1,74 @@
+---
+const cats = [
+  {
+    label:"Languages",
+    items:["Python","SQL"]
+  },
+  {
+    label:"AI / ML Libraries",
+    items:["Pandas","NumPy","Scikit-learn","Matplotlib","Seaborn","XGBoost","Sentence-BERT","DistilBERT"]
+  },
+  {
+    label:"Frameworks",
+    items:["FastAPI","Flask","Jinja2"]
+  },
+  {
+    label:"Tools & DevOps",
+    items:["Git","GitHub","Docker","Jenkins","Jupyter","VS Code","Linux","Excel"]
+  },
+];
+---
+
+<section class="skills-section" id="skills">
+  <div class="animated-line"></div>
+  <div class="section-backdrop" style="bottom:-20px;">SKILLS</div>
+  <div class="container">
+    <p class="section-eyebrow sect-reveal">Technical Stack /&gt;</p>
+    <h2 class="sk-heading sect-reveal d1">Skills</h2>
+    <div class="sk-grid">
+      {cats.map((cat,i)=>(
+        <div class={`sk-cat sect-reveal d${i+1}`}>
+          <p class="sk-label">{cat.label}</p>
+          <div class="sk-pills">
+            {cat.items.map(item=><span class="sk-pill">{item}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.skills-section {
+  padding: 110px 0; background: var(--black);
+  position: relative; overflow: hidden;
+}
+.sk-heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700; letter-spacing: -0.03em;
+  color: var(--white); margin-bottom: 56px;
+}
+.sk-grid { display: flex; flex-direction: column; gap: 36px; }
+.sk-cat { display: flex; flex-direction: column; gap: 14px; }
+.sk-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem; color: var(--gray);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.sk-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.sk-pill {
+  font-family: var(--font-mono); font-size: 0.82rem;
+  padding: 7px 18px; border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  cursor: default;
+}
+.sk-pill:hover {
+  background: rgba(0,210,255,0.08);
+  border-color: rgba(0,210,255,0.35);
+  color: var(--accent);
+}
+</style>

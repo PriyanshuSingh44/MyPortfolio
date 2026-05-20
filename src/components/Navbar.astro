@@ -1,0 +1,118 @@
+---
+---
+<header class="nav" id="nav">
+  <div class="nav-logo">PS<span class="accent">.</span></div>
+  <nav class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#skills">Skills</a>
+    <a href="#certificates">Certs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="https://drive.google.com/file/d/1F83NP2UULVtiYfvtPEGuBquQQu4AYv66/view?usp=sharing" target="_blank" class="nav-resume">Resume</a>
+  <button class="nav-burger" id="burger" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<style>
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  display: flex; align-items: center; gap: 24px;
+  padding: 0 40px; height: 64px;
+  transition: background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(8,11,14,0.92);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+.nav-logo {
+  font-family: var(--font-head);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--white); letter-spacing: -0.03em;
+  margin-right: auto;
+}
+.accent { color: var(--accent); }
+.nav-links {
+  display: flex; gap: 4px;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--gray);
+  padding: 6px 14px; border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.03em;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.05);
+}
+.nav-links a.active { color: var(--accent); }
+.nav-resume {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 16px; border-radius: 4px;
+  letter-spacing: 0.06em;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-resume:hover { background: var(--accent); color: var(--black); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--gray); border-radius: 1px;
+  transition: all 0.3s;
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 20px; }
+  .nav-links {
+    display: none; flex-direction: column; gap: 2px;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(8,11,14,0.97);
+    backdrop-filter: blur(20px);
+    padding: 16px 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 14px; font-size: 0.9rem; }
+  .nav-burger { display: flex; }
+  .nav-resume { font-size: 0.7rem; padding: 5px 12px; }
+}
+</style>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const burger = document.getElementById('burger')!;
+  const links = document.getElementById('navLinks')!;
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Active highlight
+  const sections = document.querySelectorAll('section[id]');
+  const anchors = links.querySelectorAll('a');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        anchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' }).observe;
+  sections.forEach(s => new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        anchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' }).observe(s));
+</script>

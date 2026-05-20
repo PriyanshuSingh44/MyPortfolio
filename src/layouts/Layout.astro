@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const { title = "Priyanshu Singh | AI & ML Developer", description = "AI & ML Developer portfolio." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#080b0e" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Cursor glow -->
+  <div id="cursor-glow"></div>
+
+  <slot />
+
+  <script>
+    import Lenis from 'lenis';
+
+    // Initialize Lenis for fluid scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    /* ── Scroll progress ── */
+    const bar = document.getElementById('scroll-progress')!;
+    const updateProgress = () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    /* ── Cursor glow ── */
+    const glow = document.getElementById('cursor-glow')!;
+    let gx = window.innerWidth / 2, gy = window.innerHeight / 2;
+    let cx = gx, cy = gy;
+    document.addEventListener('mousemove', e => { gx = e.clientX; gy = e.clientY; }, { passive: true });
+    const animGlow = () => {
+      cx += (gx - cx) * 0.09;
+      cy += (gy - cy) * 0.09;
+      glow.style.left = cx + 'px';
+      glow.style.top  = cy + 'px';
+      requestAnimationFrame(animGlow);
+    };
+    animGlow();
+
+    /* ── Unified scroll reveal observer ── */
+    const TARGETS = [
+      '.sect-reveal',
+      '.slide-left',
+      '.slide-right',
+      '.scale-up',
+      '.wipe-up',
+      '.section-slide',
+    ].join(',');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Observe after a short delay so initial paint isn't blocked
+    requestAnimationFrame(() => {
+      document.querySelectorAll(TARGETS).forEach(el => observer.observe(el));
+    });
+
+    /* ── Section entrance: each <section> slides in horizontally ── */
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('section-entered');
+            sectionObserver.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    document.querySelectorAll('section').forEach(s => sectionObserver.observe(s));
+
+    /* ── Add section border line animation ── */
+    // When a section enters view, animate a horizontal line across the top
+    const lineObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const line = e.target.querySelector<HTMLElement>('.animated-line');
+          if (line) {
+            line.style.transform = 'scaleX(1)';
+            line.style.opacity = '1';
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section').forEach(s => lineObserver.observe(s));
+  </script>
+
+  <style is:global>
+    /* Section entrance — horizontal slide from right */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    section.section-entered {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Hero is always visible */
+    #hero {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Animated section top line */
+    .animated-line {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      opacity: 0;
+      transition: transform 1.2s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,90 @@
+---
+const certs = [
+  { id:"c1", issuer:"HackerRank", title:"Python Basics", href:"https://drive.google.com/file/d/1evKrl7VdDSivLM5GpdkcrY3zIHvpjbxM/view?usp=sharing" },
+  { id:"c2", issuer:"Kaggle", title:"Intro to Machine Learning", href:"https://drive.google.com/file/d/18acFHzdLjqc4Goeu_Qdn6xYlZuy31F_o/view?usp=sharing" },
+  { id:"c3", issuer:"Kaggle", title:"Intermediate Machine Learning", href:"https://drive.google.com/file/d/1Fc4SBB2dLLxmODqAyoy8uGlWU0y2tZBs/view?usp=sharing" },
+  { id:"c4", issuer:"CSE Pathshala", title:"DSA with Python", href:"https://drive.google.com/file/d/1MLvQmCM1xH1uLkanyaSIGM0-0ZkBI_C-/view?usp=sharing" },
+];
+---
+
+<section class="certs-section" id="certificates">
+  <div class="animated-line"></div>
+  <div class="container">
+    <div class="divider-line"></div>
+    <p class="section-eyebrow sect-reveal">Credentials /&gt;</p>
+    <h2 class="certs-heading sect-reveal d1">Certificates</h2>
+    <div class="certs-marquee-wrap sect-reveal d2">
+      <div class="certs-marquee-track">
+        {[...certs, ...certs].map((c,i)=>(
+          <a href={c.href} target="_blank" rel="noopener"
+             class="cert-card" id={`${c.id}-${i}`}>
+            <span class="cert-issuer">{c.issuer}</span>
+            <h3 class="cert-title">{c.title}</h3>
+            <span class="cert-link">View ↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.certs-section { padding: 80px 0 110px; background: var(--black); }
+.divider-line { height: 1px; background: var(--border); margin-bottom: 80px; }
+.certs-heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700; letter-spacing: -0.03em;
+  color: var(--white); margin-bottom: 56px;
+}
+.certs-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+.certs-marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+.certs-marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 10px)); }
+}
+.cert-card {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--card); padding: 32px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  transition: background 0.25s, transform 0.25s;
+}
+.cert-card:hover {
+  background: rgba(0,210,255,0.05);
+  transform: translateY(-4px);
+  border-color: rgba(0,210,255,0.3);
+}
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.cert-title {
+  font-family: var(--font-head);
+  font-size: 1rem; font-weight: 600;
+  color: var(--white); line-height: 1.3; flex: 1;
+}
+.cert-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--gray-dim);
+  transition: color 0.2s;
+}
+.cert-card:hover .cert-link { color: var(--accent); }
+</style>

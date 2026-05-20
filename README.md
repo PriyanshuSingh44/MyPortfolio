@@ -1,30 +1,35 @@
-# My Portfolio 🚀
+# Priyanshu Singh — Portfolio 🚀
 
-Hey! This is my personal portfolio website built with plain HTML, CSS and JavaScript.
+Personal portfolio website built with **Astro** — fast, modern, and component-driven.
 
-## What's inside
+## Sections
 
-- **About Me** – quick intro and background
-- **Skills** – languages, AI/ML stack, tools I use
-- **Projects** – stuff I've built
-- **Certificates** – courses I've completed
-- **Training** – DSA training at CSE Pathshala
-- **Education** – B.Tech (AI & ML) at LPU + schooling
-- **Contact** – ways to reach me
+- **Hero** — animated dot-network canvas with typewriter role display
+- **About** — bio, spinning photo ring, live stats counter
+- **Projects** — accordion list of 6 projects with tech pills & GitHub links
+- **Timeline** — education & training history (split two-column layout)
+- **Skills** — categorized tech stack with hover pill effects
+- **Certificates** — scrolling marquee of certifications
+- **Contact** — social link buttons + live CV preview card
 
-## Tech used
+## Tech Stack
 
-- HTML + CSS + Vanilla JS (no frameworks)
-- Google Drive for assets (certificates, CV, photo)
-- Hosted on GitHub Pages
+- [Astro](https://astro.build) — static site generator with component islands
+- [Lenis](https://lenis.darkroom.engineering/) — smooth scroll
+- Vanilla CSS with CSS custom properties (design tokens)
+- TypeScript in component scripts
 
-## Live site
+## Dev
 
-> [Live](https://my-portfolio-one-mocha-70.vercel.app)
+```bash
+npm install
+npm run dev      # dev server → http://localhost:4321
+npm run build    # production build → dist/
+npm run preview  # preview production build
+```
 
 ## Contact
 
 - 📧 priyanshu3303@gmail.com
 - 💼 [LinkedIn](https://www.linkedin.com/in/priyanshu-singh-ai)
 - 🐱 [GitHub](https://github.com/PriyanshuSingh44)
-- 🧩 [LeetCode](https://leetcode.com/u/Priyanshu3303/)
