@@ -38,16 +38,33 @@
         </h2>
         <div class="about-text slide-right d4">
           <p>
-            Third-year <strong>B.Tech (AI &amp; ML)</strong> student at Lovely Professional University
-            obsessed with turning raw data into impactful decisions. I've shipped NLP platforms,
-            predictive dashboards, and full-stack ML systems.
+            <strong>B.Tech student</strong> specializing in <strong>Artificial Intelligence &amp; Machine Learning</strong>
+            with a strong passion for building AI-powered applications, scalable software systems,
+            and developer-focused tools. I enjoy turning ideas into real-world projects by combining
+            <strong>Python, Machine Learning, Web Development, and DevOps</strong> practices.
           </p>
           <p>
-            Outside code — competitive programming, diving into research papers,
-            and contributing to open-source. Always building, always learning.
+            From NLP and predictive analytics dashboards to automation tools and full-stack
+            applications — I'm constantly exploring new technologies and improving my problem-solving
+            skills. Currently focused on <strong>AI engineering</strong>, open-source development,
+            and creating impactful solutions that bridge research with practical applications.
           </p>
         </div>
-        <div class="about-stats scale-up d5">
+        <div class="about-links slide-right d5">
+          <a href="https://github.com/PriyanshuSingh44" target="_blank" rel="noopener noreferrer" class="about-link-btn github-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Explore my work on GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/priyanshu-singh-btech-aiml/" target="_blank" rel="noopener noreferrer" class="about-link-btn linkedin-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            Connect with me on LinkedIn
+          </a>
+        </div>
+        <div class="about-stats scale-up d6">
           <div class="astat"><span class="astat-n" data-to="20">0</span><span class="astat-u">+</span><p>Repos</p></div>
           <div class="astat"><span class="astat-n" data-to="4">0</span><span class="astat-u">+</span><p>Certs</p></div>
           <div class="astat"><span class="astat-n" data-to="6">0</span><span class="astat-u">+</span><p>Projects</p></div>
@@ -156,6 +173,44 @@
 .about-text { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
 .about-text p { font-family:var(--font-mono); font-size:0.88rem; color:var(--gray); line-height:1.85; }
 .about-text strong { color: var(--white); font-weight:600; }
+/* Social CTA Links */
+.about-links {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-bottom: 32px;
+}
+.about-link-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  border-radius: 4px; text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  letter-spacing: 0.04em;
+}
+.github-btn {
+  background: rgba(255,255,255,0.06);
+  color: var(--gray);
+  border-color: var(--border);
+}
+.github-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.linkedin-btn {
+  background: rgba(0, 119, 181, 0.12);
+  color: #58b4d8;
+  border-color: rgba(0, 119, 181, 0.35);
+}
+.linkedin-btn:hover {
+  background: rgba(0, 119, 181, 0.22);
+  color: #7dcfee;
+  border-color: rgba(0, 119, 181, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,119,181,0.2);
+}
 .about-stats {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
   padding: 28px; background: var(--surface);
